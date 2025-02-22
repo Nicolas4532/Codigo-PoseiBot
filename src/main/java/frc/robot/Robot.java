@@ -1,18 +1,15 @@
-
 package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.Elevador;
-import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.Lifter;
 import frc.robot.subsystems.Shooter; 
 
 public class Robot extends TimedRobot {
 
   public Drivetrain drivetrain;
-  public Intake intake;
   public Shooter shooter;
   public Elevador elevador;
   public Lifter lifter;
@@ -22,10 +19,8 @@ public class Robot extends TimedRobot {
   
   @Override
   public void robotInit() {
-    System.out.println("Subsistemas inicializados correctamente");
     drivetrain = new Drivetrain();
     elevador = new Elevador();
-    intake = new Intake();
     lifter = new Lifter();
     shooter = new Shooter();
     controller = new XboxController(0);
@@ -56,30 +51,26 @@ public class Robot extends TimedRobot {
 
   public void teleopPeriodic() {
    
-    drivetrain.drive(controller.getRightY(), controller.getLeftX());
+    drivetrain.drive(-controller.getRightY(), controller.getLeftX());
 
-      //if (controller.getAButton()) {
-        //shooter.shoot();
-      //} else  {
-        //shooter.stop();
-      //}
-      //if (controller.getBButton()) {
-        //intake.jalar();
-      //} else  {
-        //intake.parar();
-      //}
-      if (controller.getLeftBumperButton()) {
+      if (controller.getAButton()) {
+        shooter.shoot();
+      } else if (controller.getBButton()) {
+        shooter.reverse();
+      } else  {
+        shooter.stop();
+      }
+      if (controller.getRightBumperButton()) {
         elevador.subir();
-      } else if 
-         (controller.getRightBumperButton()) {
+      } else if (controller.getLeftBumperButton()) {
         elevador.bajar();
       } else  {
         elevador.detenerse();
       }
-      //if (controller.getXButton()) {
-        //lifter.lift();
-      //} else  {
-        //lifter.hold();
-      //}
+      if (controller.getXButton()) {
+        lifter.lift();
+      } else  {
+        lifter.hold();
+      }
   } 
 }

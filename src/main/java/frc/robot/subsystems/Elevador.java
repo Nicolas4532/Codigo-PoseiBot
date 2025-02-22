@@ -20,7 +20,7 @@ public  class Elevador extends SubsystemBase {
     //SparkMaxConfig elevadorMotorLeaderConfig = new SparkMaxConfig();
     SparkMaxConfig elevadorMotorFollowerConfig = new SparkMaxConfig();
 
-    baseConfig.idleMode(IdleMode.kCoast);
+    baseConfig.idleMode(IdleMode.kBrake);
 
     elevadorMotorFollowerConfig
     .apply(baseConfig)
@@ -28,8 +28,6 @@ public  class Elevador extends SubsystemBase {
 
     elevadorMotorLeader.configure(baseConfig,com.revrobotics.spark.SparkBase.ResetMode.kResetSafeParameters, PersistMode.kNoPersistParameters);
     elevadorMotorFollower.configure(elevadorMotorFollowerConfig,com.revrobotics.spark.SparkBase.ResetMode.kResetSafeParameters, PersistMode.kNoPersistParameters);
-
-    
 }
     public void subir() {
         elevadorMotorLeader.set(1); 

@@ -58,30 +58,28 @@ public class Robot extends TimedRobot {
    
     drivetrain.drive(controller.getRightY(), controller.getLeftX());
 
-      if (controller.getAButton()) {
-        shooter.shoot();
-      } else  {
-        shooter.stop();
-      }
-      if (controller.getBButton()) {
-        intake.jalar();
-      } else  {
-        intake.parar();
-      }
+      //if (controller.getAButton()) {
+        //shooter.shoot();
+      //} else  {
+        //shooter.stop();
+      //}
+      //if (controller.getBButton()) {
+        //intake.jalar();
+      //} else  {
+        //intake.parar();
+      //}
       if (controller.getLeftBumperButton()) {
+        elevador.subir();
+      } else if 
+         (controller.getRightBumperButton()) {
         elevador.bajar();
       } else  {
         elevador.detenerse();
       }
-      if (controller.getRightBumperButton()) {
-        elevador.subir();
-      } else  {
-        elevador.detenerse();
-      }
-      if (controller.getXButton()) {
-        lifter.lift();
-      } else  {
-        lifter.hold();
-      }
+      //if (controller.getXButton()) {
+        //lifter.lift();
+      //} else  {
+        //lifter.hold();
+      //}
   } 
 }

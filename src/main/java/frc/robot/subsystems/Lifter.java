@@ -2,18 +2,39 @@ package frc.robot.subsystems;
 
 import com.revrobotics.spark.SparkLowLevel.MotorType;
 import com.revrobotics.spark.SparkMax;
+import com.revrobotics.spark.SparkBase.PersistMode;
+import com.revrobotics.spark.config.SparkMaxConfig;
+import com.revrobotics.spark.config.SparkBaseConfig.IdleMode;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public  class Lifter extends SubsystemBase {
     
-    public SparkMax lifterMotor; //Lifter neo c planetary gearbox
+    public SparkMax lifterMotorLeader; //elevador cims en toughbox
+    public SparkMax lifterMotorFollower; //elevador cim en toughbox
     public Lifter() {
-        lifterMotor = new SparkMax(8, MotorType.kBrushless);
-    }
+
+    lifterMotorLeader = new SparkMax(6, MotorType.kBrushless);
+    lifterMotorFollower = new SparkMax(7, MotorType.kBrushless);
+
+    SparkMaxConfig baseConfig = new SparkMaxConfig();
+    //SparkMaxConfig lifterrMotorLeaderConfig = new SparkMaxConfig();
+    SparkMaxConfig lifterMotorFollowerConfig = new SparkMaxConfig();
+
+    baseConfig.idleMode(IdleMode.kBrake);
+
+    lifterMotorFollowerConfig
+    .apply(baseConfig)
+    .follow(lifterMotorLeader);
+
+    lifterMotorLeader.configure(baseConfig,com.revrobotics.spark.SparkBase.ResetMode.kResetSafeParameters, PersistMode.kNoPersistParameters);
+    lifterMotorFollower.configure(lifterMotorFollowerConfig,com.revrobotics.spark.SparkBase.ResetMode.kResetSafeParameters, PersistMode.kNoPersistParameters);
+
+    
+}
 public void lift() {
-    lifterMotor.set(1); 
+    lifterMotorLeader.set(1); 
 }
 public void hold() {
-    lifterMotor.set(0); 
+    lifterMotorLeader.set(0);
 }
 }

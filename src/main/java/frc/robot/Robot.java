@@ -16,9 +16,6 @@ import frc.robot.subsystems.Shooter;
 
 public class Robot extends TimedRobot {
 
-  // Línea de prueba que no hace nada
-int pruebaGit = 0;
-
   public Drivetrain drivetrain;
   public Shooter shooter;
   public Elevador elevador;

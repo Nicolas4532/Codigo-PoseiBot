@@ -13,7 +13,6 @@ public class Drivetrain extends SubsystemBase{
  
   public SparkMax leftMotorLeader; //Drivetrain cims izquierdo 1
   public SparkMax leftMotorFollower; //Drivetrain cims izquierdo 2
-
   public SparkMax rightMotorLeader; //Drivetrain cims derecho 1
   public SparkMax rightMotorFollower; //Drivetrain cims derecho 2
 
@@ -21,10 +20,10 @@ public class Drivetrain extends SubsystemBase{
 
     public Drivetrain() {
 
-    leftMotorLeader = new SparkMax(1, MotorType.kBrushed); 
-    leftMotorFollower = new SparkMax(2, MotorType.kBrushed);
-    rightMotorLeader = new SparkMax(3, MotorType.kBrushed); 
-    rightMotorFollower = new SparkMax(4, MotorType.kBrushed);
+    leftMotorLeader = new SparkMax(2, MotorType.kBrushed); 
+    leftMotorFollower = new SparkMax(3, MotorType.kBrushed);
+    rightMotorLeader = new SparkMax(4, MotorType.kBrushed); 
+    rightMotorFollower = new SparkMax(5, MotorType.kBrushed);
 
     SparkMaxConfig baseConfig = new SparkMaxConfig();
     SparkMaxConfig leftMotorFollowerConfig = new SparkMaxConfig();

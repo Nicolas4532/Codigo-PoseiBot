@@ -3,12 +3,6 @@ package frc.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.XboxController;
-import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.CommandScheduler;
-import edu.wpi.first.wpilibj2.command.InstantCommand;
-import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
-import edu.wpi.first.wpilibj2.command.WaitCommand;
-import frc.commands.DriveStraight;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.Elevador;
 import frc.robot.subsystems.Lifter;
@@ -42,7 +36,7 @@ public class Robot extends TimedRobot {
  
   @Override
 public void autonomousInit() {
-  startTime = Timer.getFPGATimestamp(); // Guarda el tiempo en el que inició auton
+  startTime = Timer.getFPGATimestamp(); // Guarda el tiempo en el que inició autonomo
 }
 
 @Override
@@ -87,7 +81,7 @@ public void teleopPeriodic() {
     }
 
     // --- Shooter con triggers proporcionales ---
-    double rightTrigger = controller.getRawAxis(3); // Disparo
+    double rightTrigger = controller.getRawAxis(3); // Shoot
     double leftTrigger = controller.getRawAxis(2);  // Reversa
 
     if (rightTrigger > 0.05) { // deadband pequeño

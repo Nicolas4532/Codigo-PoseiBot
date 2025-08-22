@@ -9,7 +9,7 @@ public class Shooter extends SubsystemBase {
     public SparkMax motor; // NEO en outtake
     
     public Shooter() {
-        motor = new SparkMax(10, MotorType.kBrushless);
+        motor = new SparkMax(7, MotorType.kBrushless);
     }
 
     public void shoot(double speed) {

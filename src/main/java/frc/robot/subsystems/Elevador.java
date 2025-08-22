@@ -13,8 +13,8 @@ public  class Elevador extends SubsystemBase {
     public SparkMax elevadorMotorFollower; //elevador cim en toughbox
     public Elevador() {
 
-    elevadorMotorLeader = new SparkMax(6, MotorType.kBrushed);
-    elevadorMotorFollower = new SparkMax(7, MotorType.kBrushed);
+    elevadorMotorLeader = new SparkMax(5, MotorType.kBrushed);
+    elevadorMotorFollower = new SparkMax(6, MotorType.kBrushed);
 
     SparkMaxConfig baseConfig = new SparkMaxConfig();
     //SparkMaxConfig elevadorMotorLeaderConfig = new SparkMaxConfig();

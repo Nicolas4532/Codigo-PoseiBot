@@ -38,8 +38,23 @@ public class Robot extends TimedRobot {
   public void robotPeriodic() {}
  
   @Override
+<<<<<<< HEAD
   public void autonomousInit() {
     startTime = Timer.getFPGATimestamp(); // Guarda el tiempo en el que inició autonomo
+=======
+public void autonomousInit() {
+  startTime = Timer.getFPGATimestamp(); // Guarda el tiempo en el que inició autonomo
+}
+
+@Override
+public void autonomousPeriodic() {
+  double timeElapsed = Timer.getFPGATimestamp() - startTime;
+
+  if (timeElapsed < 3.0) {
+    drivetrain.drive(-0.5, 0);  // Avanza hacia adelante por 3 segundos
+  } else {
+    drivetrain.drive(0, 0);     // Se detiene después
+>>>>>>> d2121f7430e1053b28dc8a6568e00366526ac53b
   }
 
   @Override
@@ -109,8 +124,13 @@ public class Robot extends TimedRobot {
       lifter.hold();
     }
 
+<<<<<<< HEAD
     // ---- Shooter ----
     double rightTrigger = controller.getRawAxis(3); // Disparo
+=======
+    // --- Shooter con triggers proporcionales ---
+    double rightTrigger = controller.getRawAxis(3); // Shoot
+>>>>>>> d2121f7430e1053b28dc8a6568e00366526ac53b
     double leftTrigger = controller.getRawAxis(2);  // Reversa
 
     if (rightTrigger > 0.05) { // para que no se active solo

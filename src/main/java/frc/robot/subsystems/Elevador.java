@@ -5,19 +5,22 @@ import com.revrobotics.spark.SparkMax;
 import com.revrobotics.spark.SparkBase.PersistMode;
 import com.revrobotics.spark.config.SparkMaxConfig;
 import com.revrobotics.spark.config.SparkBaseConfig.IdleMode;
+
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public  class Elevador extends SubsystemBase {
     
     public SparkMax elevadorMotorLeader; //elevador cims en toughbox
     public SparkMax elevadorMotorFollower; //elevador cim en toughbox
+    public DigitalInput Limit1;
     public Elevador() {
 
     elevadorMotorLeader = new SparkMax(6, MotorType.kBrushed);
     elevadorMotorFollower = new SparkMax(7, MotorType.kBrushed);
+    Limit1 = new DigitalInput(0);
 
     SparkMaxConfig baseConfig = new SparkMaxConfig();
-    //SparkMaxConfig elevadorMotorLeaderConfig = new SparkMaxConfig();
     SparkMaxConfig elevadorMotorFollowerConfig = new SparkMaxConfig();
 
     baseConfig.idleMode(IdleMode.kBrake);
@@ -36,6 +39,10 @@ public  class Elevador extends SubsystemBase {
         elevadorMotorLeader.set(0);
     }
     public void bajar() {
-        elevadorMotorLeader.set(-.5); 
+        elevadorMotorLeader.set(-.65); 
+    }
+
+    public boolean Abajo() {
+        return !Limit1.get();
     }
 }

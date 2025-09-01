@@ -68,16 +68,10 @@ public void teleopPeriodic() {
 
     if (controller.getRightBumperButton()) {
       elevador.subir();
-    } else if (controller.getLeftBumperButton()) {
+    } else if (controller.getLeftBumperButton() && !elevador.Abajo()) { // baja si el bumper izquiero esta activo y el elevador NO esta abajo
       elevador.bajar();
     } else {
       elevador.detenerse();
-    }
-
-    if (controller.getXButton()) {
-      lifter.lift();
-    } else {
-      lifter.hold();
     }
 
     // --- Shooter con triggers proporcionales ---

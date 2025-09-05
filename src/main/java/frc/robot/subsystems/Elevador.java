@@ -14,12 +14,16 @@ public class Elevador extends SubsystemBase {
     public SparkMax elevadorMotorLeader; // elevador cims en toughbox
     public SparkMax elevadorMotorFollower; // elevador cim en toughbox
     public DigitalInput Limit1;
+    public DigitalInput Limit2;
+    public DigitalInput Limit3;
 
     public Elevador() {
 
-        elevadorMotorLeader = new SparkMax(6, MotorType.kBrushed);
-        elevadorMotorFollower = new SparkMax(7, MotorType.kBrushed);
+        elevadorMotorLeader = new SparkMax(5, MotorType.kBrushed);
+        elevadorMotorFollower = new SparkMax(6, MotorType.kBrushed);
         Limit1 = new DigitalInput(0);
+        Limit2 = new DigitalInput(1);
+        Limit3 = new DigitalInput(2);
 
         SparkMaxConfig baseConfig = new SparkMaxConfig();
         SparkMaxConfig elevadorMotorFollowerConfig = new SparkMaxConfig();
@@ -50,5 +54,13 @@ public class Elevador extends SubsystemBase {
 
     public boolean Abajo() {
         return !Limit1.get();
+    }
+
+    public boolean Medio() {
+        return !Limit2.get();
+    }
+
+    public boolean Arriba() {
+        return !Limit3.get();
     }
 }

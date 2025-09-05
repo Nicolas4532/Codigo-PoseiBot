@@ -5,7 +5,6 @@ import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.Elevador;
-import frc.robot.subsystems.Lifter;
 import frc.robot.subsystems.Shooter;
 
 public class Robot extends TimedRobot {
@@ -13,7 +12,6 @@ public class Robot extends TimedRobot {
   public Drivetrain drivetrain;
   public Shooter shooter;
   public Elevador elevador;
-  public Lifter lifter;
   public XboxController controller;
   public double startTime;
 
@@ -26,7 +24,6 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     drivetrain = new Drivetrain();
     elevador = new Elevador();
-    lifter = new Lifter();
     shooter = new Shooter();
     controller = new XboxController(0);
   }
@@ -72,8 +69,7 @@ public class Robot extends TimedRobot {
 
     if (controller.getRightBumperButton()) {
       elevador.subir();
-    } else if (controller.getLeftBumperButton() && !elevador.Abajo()) { // baja si el bumper izquiero esta activo y el
-                                                                        // elevador NO esta abajo
+    } else if (controller.getLeftBumperButton()) {
       elevador.bajar();
     } else {
       elevador.detenerse();
